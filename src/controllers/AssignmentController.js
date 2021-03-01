@@ -1,17 +1,32 @@
 const Assignment = require('../models/Assignment');
 
 const index = async (req, res) => {
-  const { page, limit } = req.query;
-  const assignments = await Assignment.paginate(
-    {},
-    {
-      page: parseInt(page, 10) || 1,
-      limit: parseInt(limit, 10) || 10,
-      populate: 'user',
-      sort: { created_at: -1 },
-    }
-  );
-  return res.status(200).json(assignments);
+  const { page, limit, groupe } = req.query;
+  if (groupe) {
+    assignments = await Assignment.paginate(
+      {
+        groupe,
+      },
+      {
+        page: parseInt(page, 10) || 1,
+        limit: parseInt(limit, 10) || 10,
+        populate: 'user',
+        sort: { created_at: -1 },
+      }
+    );
+    return res.status(200).json(assignments);
+  } else {
+    assignments = await Assignment.paginate(
+      {},
+      {
+        page: parseInt(page, 10) || 1,
+        limit: parseInt(limit, 10) || 10,
+        populate: 'user',
+        sort: { created_at: -1 },
+      }
+    );
+    return res.status(200).json(assignments);
+  }
 };
 
 const show = async (req, res) => {

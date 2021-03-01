@@ -10,6 +10,7 @@ const User = new schema({
   password: String,
   role: String,
   avatar: String,
+  groupe: String,
 
   matiere: {
     type: mongoose.Types.ObjectId,

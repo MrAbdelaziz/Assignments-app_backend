@@ -25,6 +25,7 @@ const seed = async (n) => {
       password: faker.internet.password(),
       avatar: faker.internet.avatar(),
       role: 'ADMIN',
+      groupe: '',
       matiere: matiere._id,
     });
 
@@ -38,6 +39,7 @@ const seed = async (n) => {
       password: faker.internet.password(),
       avatar: faker.internet.avatar(),
       role: 'BASE',
+      groupe: '',
       matiere: matiere._id,
     });
 
@@ -47,6 +49,7 @@ const seed = async (n) => {
     const assignment = await Assignment.create({
       title: faker.name.title(),
       des: faker.lorem.paragraph(),
+      groupe: '',
       user: user._id,
     });
 

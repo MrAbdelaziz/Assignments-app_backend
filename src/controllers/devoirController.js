@@ -1,16 +1,29 @@
 const Devoire = require('../models/Devoir');
 
 const index = async (req, res) => {
-  const { page, limit } = req.query;
-  const devoires = await Devoire.paginate(
-    {},
-    {
-      page: parseInt(page, 10) || 1,
-      limit: parseInt(limit, 10) || 10,
-      sort: { created_at: -1 },
-    }
-  );
-  return res.status(200).json(devoires);
+  const { page, limit, assignment } = req.query;
+  if (assignment) {
+    console.log(assignment);
+    const devoires = await Devoire.paginate(
+      { assignment },
+      {
+        page: parseInt(page, 10) || 1,
+        limit: parseInt(limit, 10) || 10,
+        sort: { created_at: -1 },
+      }
+    );
+    return res.status(200).json(devoires);
+  } else {
+    const devoires = await Devoire.paginate(
+      {},
+      {
+        page: parseInt(page, 10) || 1,
+        limit: parseInt(limit, 10) || 10,
+        sort: { created_at: -1 },
+      }
+    );
+    return res.status(200).json(devoires);
+  }
 };
 
 const show = async (req, res) => {

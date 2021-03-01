@@ -6,6 +6,7 @@ const Assignment = new schema({
   id: mongoose.Types.ObjectId,
   title: String,
   des: String,
+  groupe: String,
   user: {
     type: mongoose.Types.ObjectId,
     ref: 'User',
