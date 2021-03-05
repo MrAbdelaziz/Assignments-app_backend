@@ -1,5 +1,6 @@
 const express = require('express');
 const router = require('./routes');
+var cors = require('cors');
 var bodyParser = require('body-parser');
 require('./database');
 
@@ -12,6 +13,7 @@ const app = express();
  * * MIDDLEWARE
  */
 app.use(bodyParser.json());
+app.use(cors());
 
 /**
  * * ROUTES
