@@ -1,7 +1,7 @@
 const Devoire = require('../models/Devoir');
 
 const index = async (req, res) => {
-  const { page, limit, assignment } = req.query;
+  const { page, limit, assignment, user } = req.query;
   if (assignment && user) {
     const devoires = await Devoire.paginate(
       { assignment, user },
