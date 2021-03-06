@@ -8,6 +8,7 @@ const schema = Joi.object({
     tlds: { allow: ['com', 'net'] },
   }),
   role: Joi.string().required(),
+  groupe: Joi.string(),
   avatar: Joi.string().required(),
   password: Joi.string().alphanum().min(3).max(30).required(),
 });
