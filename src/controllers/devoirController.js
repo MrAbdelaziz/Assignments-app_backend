@@ -2,10 +2,9 @@ const Devoire = require('../models/Devoir');
 
 const index = async (req, res) => {
   const { page, limit, assignment } = req.query;
-  if (assignment) {
-    console.log(assignment);
+  if (assignment && user) {
     const devoires = await Devoire.paginate(
-      { assignment },
+      { assignment, user },
       {
         page: parseInt(page, 10) || 1,
         limit: parseInt(limit, 10) || 10,
