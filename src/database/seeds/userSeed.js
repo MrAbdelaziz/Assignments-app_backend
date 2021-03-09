@@ -16,20 +16,6 @@ const seed = async (n) => {
     });
 
     /**
-     * * CREATE ADMIN USER
-     */
-    await User.create({
-      name: faker.name.firstName(),
-      username: faker.internet.userName(),
-      email: faker.internet.email(),
-      password: faker.internet.password(),
-      avatar: faker.internet.avatar(),
-      role: 'ADMIN',
-      groupe: '',
-      matiere: matiere._id,
-    });
-
-    /**
      * * BASE USER
      */
     const user = await User.create({
@@ -46,22 +32,10 @@ const seed = async (n) => {
     /**
      * * ASSIGNEMENT
      */
-    const assignment = await Assignment.create({
+    await Assignment.create({
       title: faker.name.title(),
       des: faker.lorem.paragraph(),
       groupe: '',
-      user: user._id,
-    });
-
-    /**
-     * * DEVOIR
-     */
-    await Devoir.create({
-      title: faker.name.title(),
-      remarques: faker.lorem.paragraphs(),
-      type: 'EN ATTENTE',
-      note: 15,
-      assignment: assignment._id,
       user: user._id,
     });
   }
